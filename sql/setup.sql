@@ -12,12 +12,12 @@ CREATE TABLE books (
 );
 
 INSERT INTO books (title, released) VALUES
-  ('Good Omens', 1990), -- Neil Gaiman & Terry Pratchett
-  ('American Gods', 2001), -- Neil Gaiman
-  ('The Talisman', 1984), -- Stephen King and Peter Straub
-  ('The Shining', 1977), -- Stephen King
-  ('All The Light We Cannot See', 2014), --Anthony Doerr
-  ('About Grace', 2004), --Anthony Doerr
+  ('Good Omens', 1990),
+  ('American Gods', 2001),
+  ('The Talisman', 1984),
+  ('The Shining', 1977),
+  ('All The Light We Cannot See', 2014),
+  ('About Grace', 2004),
   ('The Little Book of Black Holes', 2017);
 
 CREATE TABLE authors (
