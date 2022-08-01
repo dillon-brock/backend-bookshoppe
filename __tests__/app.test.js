@@ -12,9 +12,6 @@ describe('books routes', () => {
     expect(res.body.length).toEqual(7);
     const blackHoles = res.body.find((book) => book.title === 'The Little Book of Black Holes');
     expect(blackHoles).toHaveProperty('released', 2017);
-    expect(blackHoles.authors[0]).toHaveProperty('name');
-    expect(blackHoles.authors[0]).toHaveProperty('dob');
-    expect(blackHoles.authors[0]).toHaveProperty('pob');
   });
   afterAll(() => {
     pool.end();
