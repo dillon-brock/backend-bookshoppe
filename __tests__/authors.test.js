@@ -3,15 +3,9 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('routes', () => {
+describe('author routes', () => {
   beforeEach(() => {
     return setup(pool);
-  });
-  it('should return a list of books', async () => {
-    const res = await request(app).get('/books');
-    expect(res.body.length).toEqual(7);
-    const blackHoles = res.body.find((book) => book.title === 'The Little Book of Black Holes');
-    expect(blackHoles).toHaveProperty('released', 2017);
   });
   it('should return a list of authors with id and name', async () => {
     const res = await request(app).get('/authors');
