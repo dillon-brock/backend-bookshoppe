@@ -15,6 +15,14 @@ describe('book routes', () => {
     );
     expect(blackHoles).toHaveProperty('released', 2017);
   });
+  it('should return a book with id matching req params and array of authors', async () => {
+    const res = await request(app).get('/books/:id');
+    expect(res.body).toEqual({
+      title: expect.any(String),
+      released: expect.any(Number),
+      authors: expect.any(Array)
+    });
+  });
   afterAll(() => {
     pool.end();
   });
