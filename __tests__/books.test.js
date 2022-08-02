@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const { Book } = require('../lib/models/Book');
 
 describe('book routes', () => {
   beforeEach(() => {
@@ -22,6 +23,19 @@ describe('book routes', () => {
       title: expect.any(String),
       released: expect.any(Number),
       authors: expect.any(Array)
+    });
+  });
+  it('should add a new book', async () => {
+    const book = new Book({
+      title: 'Crying In H Mart',
+      released: 2021
+    });
+    const res = await request(app).post('/books').send(book);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      title: 'Crying In H Mart',
+      released: 2021
     });
   });
   afterAll(() => {
