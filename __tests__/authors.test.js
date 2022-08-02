@@ -37,7 +37,7 @@ describe('author routes', () => {
     expect(res.body).toEqual({
       id: expect.any(String),
       name: 'Octavia E. Butler',
-      dob: '1947-06-22',
+      dob: expect.any(String),
       pob: 'Pasadena, CA'
     });
   });
