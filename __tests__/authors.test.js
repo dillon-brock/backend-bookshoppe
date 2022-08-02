@@ -55,7 +55,7 @@ describe('author routes', () => {
       name: 'Miranda July',
       dob: expect.any(String),
       pob: 'Barre, VT',
-      bookIds: [8, 9]
+      bookIds: [1, 2]
     });
   });
   
