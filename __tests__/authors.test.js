@@ -38,7 +38,7 @@ describe('author routes', () => {
       id: expect.any(String),
       name: 'Octavia E. Butler',
       dob: expect.any(String),
-      pob: 'Pasadena, CA'
+      pob: 'Pasadena, CA',
     });
   });
   it('should add a new author associated with books', async () => {
@@ -46,7 +46,7 @@ describe('author routes', () => {
       name: 'Miranda July',
       dob: '1974-02-15',
       pob: 'Barre, VT',
-      bookIds: [8, 9]
+      bookIds: [1, 2]
     };
     const res = await request(app).post('/authors').send(authorWithBookIds);
     expect(res.status).toBe(200);
@@ -55,8 +55,11 @@ describe('author routes', () => {
       name: 'Miranda July',
       dob: expect.any(String),
       pob: 'Barre, VT',
-      bookIds: [1, 2]
     });
+
+    const authorRes = await request(app).get(`/authors/${res.body.id}`);
+    expect(authorRes.body.books.length).toEqual(2);
+
   });
   
   afterAll(() => {
