@@ -26,10 +26,10 @@ describe('book routes', () => {
     });
   });
   it('should add a new book', async () => {
-    const book = new Book({
+    const book = {
       title: 'Crying In H Mart',
       released: 2021
-    });
+    };
     const res = await request(app).post('/books').send(book);
     expect(res.status).toBe(200);
     expect(res.body).toEqual({
