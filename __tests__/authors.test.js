@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const { Author } = require('../lib/models/Author');
 
 describe('author routes', () => {
   beforeEach(() => {
@@ -23,6 +24,21 @@ describe('author routes', () => {
       dob: expect.any(String),
       pob: expect.any(String),
       books: expect.any(Array)
+    });
+  });
+  it('should add a new author', async () => {
+    const author = new Author({
+      name: 'Octavia E. Butler',
+      dob: '1947-06-22',
+      pob: 'Pasadena, CA'
+    });
+    const res = await request(app).post('/authors').send(author);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: 'Octavia E. Butler',
+      dob: '1947-06-22',
+      pob: 'Pasadena, CA'
     });
   });
   afterAll(() => {
