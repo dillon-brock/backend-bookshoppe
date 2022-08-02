@@ -41,6 +41,24 @@ describe('author routes', () => {
       pob: 'Pasadena, CA'
     });
   });
+  it('should add a new author associated with books', async () => {
+    const authorWithBookIds = {
+      name: 'Miranda July',
+      dob: '1974-02-15',
+      pob: 'Barre, VT',
+      bookIds: [8, 9]
+    };
+    const res = await request(app).post('/authors').send(authorWithBookIds);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: 'Miranda July',
+      dob: expect.any(String),
+      pob: 'Barre, VT',
+      bookIds: [8, 9]
+    });
+  });
+  
   afterAll(() => {
     pool.end();
   });
