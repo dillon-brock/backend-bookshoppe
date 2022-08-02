@@ -16,8 +16,10 @@ describe('book routes', () => {
     expect(blackHoles).toHaveProperty('released', 2017);
   });
   it('should return a book with id matching req params and array of authors', async () => {
-    const res = await request(app).get('/books/:id');
+    const res = await request(app).get('/books/1');
+    console.log('THIS IS THE RESPONSE BODY:', res.body);
     expect(res.body).toEqual({
+      id: expect.any(String),
       title: expect.any(String),
       released: expect.any(Number),
       authors: expect.any(Array)
