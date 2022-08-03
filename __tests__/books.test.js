@@ -41,7 +41,7 @@ describe('book routes', () => {
     const bookWithAuthors = {
       title: 'Test Book',
       released: 2022,
-      authorsIds: [2, 3, 6]
+      authorIds: [2, 3, 6]
     };
     const res = await request(app).post('/books').send(bookWithAuthors);
     expect(res.status).toBe(200);
@@ -50,10 +50,9 @@ describe('book routes', () => {
       title: 'Test Book',
       released: 2022
     });
-
     const bookRes = await request(app).get(`/books/${res.body.id}`);
     expect(bookRes.body.authors.length).toEqual(3);
-  })
+  });
   afterAll(() => {
     pool.end();
   });
