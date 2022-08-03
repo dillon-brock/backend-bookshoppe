@@ -20,7 +20,7 @@ describe('author routes', () => {
     const res = await request(app).get('/authors/1');
     expect(res.body).toEqual({
       name: 'Neil Gaiman',
-      dob: '1960-11-10T08:00:00.000Z',
+      dob: expect.any(String),
       pob: 'Portchester, UK',
       books: expect.any(Array)
     });
