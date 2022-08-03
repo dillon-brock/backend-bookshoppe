@@ -19,10 +19,9 @@ describe('author routes', () => {
   it('should return an author with id matching the req params and an array of books', async () => {
     const res = await request(app).get('/authors/1');
     expect(res.body).toEqual({
-      id: expect.any(String),
-      name: expect.any(String),
-      dob: expect.any(String),
-      pob: expect.any(String),
+      name: 'Neil Gaiman',
+      dob: '1960-11-10T08:00:00.000Z',
+      pob: 'Portchester, UK',
       books: expect.any(Array)
     });
   });

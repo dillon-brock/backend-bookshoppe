@@ -18,9 +18,8 @@ describe('book routes', () => {
   it('should return a book with id matching req params and array of authors', async () => {
     const res = await request(app).get('/books/1');
     expect(res.body).toEqual({
-      id: expect.any(String),
-      title: expect.any(String),
-      released: expect.any(Number),
+      title: 'Good Omens',
+      released: 1990,
       authors: expect.any(Array)
     });
   });
